@@ -3,10 +3,11 @@ if($_POST){
   $num = $_POST['num'];
   $cal = $num%2;
   if($cal == 0){
-    echo ("<h2>Even Number :$num</h2>");
+     $message = ("<h5>Even Number : $num</h5>");
   }else{
-    echo ("<h2>Odd Number :$num</h2>");
+     $message = ("<h5>Odd Number : $num</h5>");
   }
+
   
 
 }
@@ -18,15 +19,6 @@ if($_POST){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Even||Odd</title>
-</head>
-<body>
-    <!doctype html>
-    <html lang="en">
       <head>
         <title>Even||Odd</title>
         <!-- Required meta tags -->
@@ -49,7 +41,8 @@ if($_POST){
                             <input type="number" name="num" id="" class="form-control" placeholder="Enter Number" aria-describedby="helpId">
                           </div>
                           <button class="btn btn-outline-dark rounded btn-larg">Cal</button>
-                      </form>
+                      </form><br>
+                      <?php echo $message ?? ""; ?>
                   </div>
                   
               </div>
@@ -62,5 +55,3 @@ if($_POST){
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       </body>
     </html>
-</body>
-</html>

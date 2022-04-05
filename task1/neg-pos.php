@@ -3,9 +3,9 @@ if($_POST){
   $num = $_POST['num'];
   $cal = $num>=0;
   if($cal == 0){
-    echo ("<h2>This Number Is a Neg Number :$num</h2>");
+    $message =("<h5>This Number Is a Neg Number : $num</h5>");
   }else{
-    echo ("<h2>This Number Is a Pos Number  :$num</h2>");
+    $message = ("<h5>This Number Is a Pos Number  : $num</h5>");
   }
   
 
@@ -42,7 +42,8 @@ if($_POST){
                             <input type="number" name="num" id="" class="form-control" placeholder="Enter Number" aria-describedby="helpId">
                           </div>
                           <button class="btn btn-outline-dark rounded btn-larg">Cal</button>
-                      </form>
+                      </form><br>
+                      <?php echo $message ?? ""; ?>
                   </div>
                   
               </div>
