@@ -1,42 +1,27 @@
 <?php
 if ($_POST) {
     $units = $_POST['units'];
-    define('VAT',0.20);
-    $VAT = 20 ;
-    
-    $firstunits = 0.50;
-    $secoundunits = 0.75;
-    $thirdunits = 1.20;
-    $aboveunits = 1.50;
+    define('VAT', 0.20);
+    $VAT = 20;
 
-    $firstprice = $firstunits * $units;
-    $secoundprice = $secoundunits * $units;
-    $thirdprice = $thirdunits * $units;
-    $aboveprice = $aboveunits * $units;
-    
-
-    
-    $firstvat = $firstprice  * VAT;
-    $secondvat = $secoundprice  * VAT;
-    $thirdvat = $thirdprice  * VAT;
-    $abovevat = $aboveprice  * VAT;
-
-    $firstaftervat = $firstprice + $firstvat;
-    $secondtaftervat = $secoundprice + $secondvat;
-    $thirdaftervat = $thirdprice + $thirdvat;
-    $aboveaftervat = $aboveprice + $abovevat;
-
-    if($units <=50){
-        $message = ("<h5>Unit Price : $firstunits</h5>.<h5>Price After Unit Price : $firstprice</h5>.<h5>Vat: 20%</h5>.<h5>Total Price After Vat :$firstaftervat EGP </h5>");
-
-    }elseif($units >50 && $units <=150){
-        $message = ("<h5>Unit Price : $secoundunits</h5>.<h5>Price After Unit Price : $secoundprice</h5>.<h5>Vat: 20%</h5>.<h5>Total Price After Vat :$secondtaftervat EGP </h5>");
-    }elseif($units >150 && $units <=250){
-        $message = ("<h5>Unit Price : $thirdunits</h5>.<h5>Price After Unit Price : $thirdprice</h5>.<h5>Vat: 20%</h5>.<h5>Total Price After Vat :$thirdaftervat EGP </h5>");
-    }elseif($units > 250){
-        $message = ("<h5>Unit Price : $aboveunits</h5>.<h5>Price After Unit Price : $aboveprice</h5>.<h5>Vat: 20%</h5>.<h5>Total Price After Vat :$aboveaftervat EGP </h5>");
+    if ($units <= 50) {
+        $unitPrice = 0.50;
+    } elseif ($units > 50 && $units <= 150) {
+        $unitPrice = 0.75;
+    } elseif ($units > 150 && $units <= 250) {
+        $unitPrice = 1.2;
+    } else {
+        $unitPrice = 1.5;
     }
-    
+    $invoicePrice = $unitPrice * $units;
+    $priceAfterVat = (VAT * $invoicePrice) + $invoicePrice;
+
+    $message = ("
+        <h5>Unit Price : $unitPrice</h5>
+        .<h5>Price After Unit Price : $invoicePrice</h5>
+        .<h5>Vat: 20%</h5>
+        .<h5>Total Price After Vat :$priceAfterVat EGP </h5>
+        ");
 }
 
 ?>
@@ -51,7 +36,7 @@ if ($_POST) {
 <html lang="en">
 
 <head>
-    <title>Electricity  </title>
+    <title>Electricity </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
