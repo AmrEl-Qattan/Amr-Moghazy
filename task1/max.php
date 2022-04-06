@@ -52,7 +52,7 @@ if ($_POST) {
                         <input type="number" name="second" id="" class="form-control" placeholder="Second Number" aria-describedby="helpId">
                         <input type="number" name="third" id="" class="form-control" placeholder="Third Number" aria-describedby="helpId">
                     </div>
-                    <button class="btn btn-outline-dark rounded btn-larg">Cal</button>
+                    <button class="btn btn-outline-dark form-control">Calc</button>
                 </form><br>
                 <?php echo $message ?? ""; ?>
             </div>

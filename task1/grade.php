@@ -65,7 +65,7 @@ if ($_POST) {
                         <input type="number" name="computer" id="" class="form-control" placeholder=" " aria-describedby="helpId">
                        
                     </div>
-                    <button class="btn btn-outline-dark rounded btn-larg">Your Result</button>
+                    <button class="btn btn-outline-dark form-control">Your Result</button>
                 </form><br>
                 <?php echo $message ?? ""; ?><br>
             </div>

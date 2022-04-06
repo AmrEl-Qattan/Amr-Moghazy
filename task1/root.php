@@ -46,7 +46,7 @@ if($_POST){
                         <input type="number" name="num" id="" class="form-control" placeholder="Enter Number" aria-describedby="helpId">
                         <input type="number" name="root" id="" class="form-control" placeholder="Enter Root" aria-describedby="helpId">
                     </div>
-                    <button class="btn btn-outline-dark rounded btn-larg">Calc</button>
+                    <button class="btn btn-outline-dark form-control">Calc</button>
                 </form><br>
                 <?php echo $message ?? ""; ?>
             </div>
