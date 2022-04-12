@@ -63,12 +63,12 @@ if ($_POST){
             <div class="col-4 offset-4 mt-5">
                 <form action="" method="post">
                     <div class="form-group">
-                        <label for="text" class="text-primary">User Name</label>
-                        <input type="text" name="username" id="" class="form-control" placeholder=" " aria-describedby="helpId">
+                        <label for="username" class="text-primary">User Name</label>
+                        <input type="username" name="username" id="username" class="form-control" placeholder=" " aria-describedby="helpId" value=<?= isset($_POST['username']) ? $_POST['username'] : '' ?>>
                         <label for="text" class="text-primary">Loan amount</label>
-                        <input type="number" name="loan" id="" class="form-control" placeholder=" " aria-describedby="helpId">
+                        <input type="number" name="loan" id="loan" class="form-control" placeholder=" " aria-describedby="helpId" value=<?= isset($_POST['loan']) ? $_POST['loan'] : '' ?>>
                         <label for="Number" class="text-primary">Loan years</label>
-                        <input type="number" name="years" id="" class="form-control" placeholder=" " aria-describedby="helpId">
+                        <input type="number" name="years" id="years" class="form-control" placeholder=" " aria-describedby="helpId" value=<?= isset($_POST['years']) ? $_POST['years'] : '' ?>>
                     </div>
                     <button class="btn btn-primary form-control text-white">Calculate</button>
                 </form><br>

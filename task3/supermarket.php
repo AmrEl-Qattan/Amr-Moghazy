@@ -71,11 +71,11 @@ if (isset($_POST['enter'])) {
                 <form action="" method="post">
                 <div class="form-group">
                         <label for="name" class="text-primary ">User Name</label>
-                        <input type="text" name="username" id="number" class="form-control">
+                        <input type="text" name="username" id="number" class="form-control" value=<?= isset($_POST['username']) ? $_POST['username'] : '' ?>>
                     </div>
                     <div class="form-group">
                         <label for="number" class="text-primary ">Number Of varieties</label>
-                        <input type="number" name="productsnumber" id="number" class="form-control">
+                        <input type="number" name="productsnumber" id="number" class="form-control" value=<?= isset($_POST['productsnumber']) ? $_POST['productsnumber'] : '' ?>>
                     </div>
                     <div class="form-group">
                         <label for="City" class="text-primary">City</label>
