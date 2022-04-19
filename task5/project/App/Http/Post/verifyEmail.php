@@ -15,7 +15,7 @@ $validator->setValueName('email')->setValue($_POST['email'])->required()->regex(
 if (!empty($validator->getErrors())) {
     $_SESSION['errors'] = $validator->getErrors();
     $_SESSION['old'] = $_POST;
-    header('location:../../../verify-email.php');
+    header('location:../../../verifyemail.php');
     die;
 }
 
@@ -25,7 +25,7 @@ $userModel->setEmail($_POST['email'])->setVerification_code($verificationCode);
 if(!$userModel->updateusercode()){
     $_SESSION['errors']['something']['wrong'] = "something  wrong";
     $_SESSION['old'] = $_POST;
-    header('location:../../../verify-email.php');
+    header('location:../../../verifyemail.php');
     die;
 }
 
@@ -33,10 +33,10 @@ if(!$userModel->updateusercode()){
  $verificationCode = new VerificationCode($_POST['email'], "verification code", $body);
  if ($verificationCode->send()) {
      $_SESSION['verification_email'] = $_POST['email'];
-     header('location:../../../verification-code.php?page=verify-email');
+     header('location:../../../verificationcode.php?page=verify-email');
      die;
  } else {
      $_SESSION['errors']['mail']['error'] = "please try again later";
-     header('location:../../../verify-email.php');
+     header('location:../../../verifyemail.php');
      die;
  }

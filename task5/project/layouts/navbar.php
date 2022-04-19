@@ -76,7 +76,7 @@
                                 <span class="digit"><?= $_SESSION['user']->first_name ?> <i class="ti-angle-down"></i></span>
                                 <div class="dollar-submenu">
                                     <ul>
-                                        <li><a href="my-account.php">my account</a></li>
+                                        <li><a href="myaccount.php">my account</a></li>
                                         <li><a href="logout.php">logout</a></li>
                                     </ul>
                                 </div>
@@ -158,7 +158,7 @@
                                     <li><a href="cart-page.php">cart page</a></li>
                                     <li><a href="checkout.php">checkout</a></li>
                                     <li><a href="wishlist.php">wishlist</a></li>
-                                    <li><a href="my-account.php">my account</a></li>
+                                    <li><a href="myaccount.php">my account</a></li>
                                     <li><a href="login-register.php">login / register</a></li>
                                     <li><a href="contact.php">contact</a></li>
                                 </ul>

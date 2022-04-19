@@ -13,7 +13,7 @@ $validator->setValueName('code')->setValue($_POST['code'])->required()->integer(
 if (!empty($validator->getErrors())) {
     $_SESSION['errors'] = $validator->getErrors();
     $_SESSION['old'] = $_POST;
-    header('location:../../../verification-code.php?page='.$_GET['page']);
+    header('location:../../../verificationcode.php?page='.$_GET['page']);
     die;
 }
 
@@ -23,7 +23,7 @@ $result = $userModel->checkCode();
 if ($result->num_rows != 1) {
     $_SESSION['errors']['code']['wrong'] = "wrong code";
     $_SESSION['old'] = $_POST;
-    header('location:../../../verification-code.php?page='.$_GET['page']);
+    header('location:../../../verificationcode.php?page='.$_GET['page']);
     die;
 }
 if ($_GET['page'] == 'signup') {
@@ -35,10 +35,10 @@ if ($_GET['page'] == 'signup') {
     } else {
         $_SESSION['errors']['someting']['wrong'] = "Something Went Wrong";
         $_SESSION['old'] = $_POST;
-        header('location:../../../verification-code.php?page='.$_GET['page']);
+        header('location:../../../verificationcode.php?page='.$_GET['page']);
         die;
     }
 }elseif($_GET['page'] == 'verify-email'){
-    header('location:../../../reset-password.php');
+    header('location:../../../resetpassword.php');
     die;
 }

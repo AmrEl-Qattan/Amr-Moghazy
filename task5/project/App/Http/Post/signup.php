@@ -37,7 +37,7 @@ if ($user->create()) {
     $verificationCode = new VerificationCode($_POST['email'], "verification code", $body);
     if ($verificationCode->send()) {
         $_SESSION['verification_email'] = $_POST['email'];
-        header('location:../../../verification-code.php?page=signup');
+        header('location:../../../verificationcode.php?page=signup');
         die;
     } else {
         $_SESSION['errors']['mail']['error'] = "please try again later";

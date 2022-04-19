@@ -15,7 +15,7 @@ $validator->setValueName('password_confirmation')->setValue($_POST['password_con
 if (!empty($validator->getErrors())) {
     $_SESSION['errors'] = $validator->getErrors();
     $_SESSION['old'] = $_POST;
-    header('location:../../../reset-password.php');
+    header('location:../../../resetpassword.php');
     die;
 }
 
@@ -24,7 +24,7 @@ $userModel->setEmail($_SESSION['verification_email'])->setPassword(password_hash
 if (! $userModel->updatepassword() ) {
     $_SESSION['errors']['code']['wrong'] = "Someting Went Wrong";
     $_SESSION['old'] = $_POST;
-    header('location:../../../reset-password.php');
+    header('location:../../../resetpassword.php');
     die;
 }
 unset($_SESSION['verification_email']);

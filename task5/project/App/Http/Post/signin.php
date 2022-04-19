@@ -42,7 +42,7 @@ if($user->getStatus() == NOT_ACTIVE){
 }
 if(is_null($user->getEmail_verified_at())){
      $_SESSION['verification_email'] = $_POST['email'];
-     header('location:../../../verification-code.php');
+     header('location:../../../verificationcode.php');
      die;
 }
 
