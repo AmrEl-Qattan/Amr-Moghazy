@@ -1,6 +1,12 @@
 <?php 
+use App\Database\Models\User;
 include_once "vendor/autoload.php";
 session_start();
+if(!isset($_SESSION['user']) && isset($_COOKIE['user'])){
+    $userObejct = new User;
+    $user = $userObejct->setRemember_token($_COOKIE['user'])->getUserByToken()->fetch_object(user::class);
+    $_SESSION['user'] = $user->safeData();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

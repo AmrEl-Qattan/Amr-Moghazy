@@ -45,6 +45,11 @@ if(is_null($user->getEmail_verified_at())){
      header('location:../../../verificationcode.php');
      die;
 }
+if(isset($_POST['remember_me'])){
+    $rememberToken = uniqid(more_entropy:true);
+    $user ->setRemember_token($rememberToken)->updateRememberToken();
+    setcookie('user',$rememberToken, time() + (365*24*60*60) ,'/');
+}
 
 $_SESSION['user'] = $user->safeData();
 header('location:../../../index.php');

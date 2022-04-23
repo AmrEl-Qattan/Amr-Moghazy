@@ -5,7 +5,7 @@ use App\Database\Contracts\Crud;
 
 class User extends Connection implements Crud {
     private $id,$first_name,$last_name,$phone,
-    $email,$password,$gender,$image,$verification_code,$status,
+    $email,$password,$gender,$image,$verification_code,$status,$remember_token,
     $email_verified_at,$created_at,$updated_at;
     
 
@@ -369,6 +369,17 @@ class User extends Connection implements Crud {
         $stmt->bind_param("ss",$this->password,$this->email);
         return $stmt->execute();
     }
+    public function updateRememberToken()
+    {
+        $query = "UPDATE `users` SET `remember_token` = ? WHERE `email` = ?";
+
+        $stmt = $this->con->prepare($query);
+        if(!$stmt){
+            return false;
+        }
+        $stmt->bind_param("ss",$this->remember_token,$this->email);
+        return $stmt->execute();
+    }
 
     public function getUserByEmail()
     {
@@ -378,6 +389,17 @@ class User extends Connection implements Crud {
             return false;
         }
         $stmt->bind_param("s",$this->email);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    public function getUserByToken()
+    {
+        $query = "SELECT * FROM `users` WHERE `remember_token` = ?";
+        $stmt = $this->con->prepare($query);
+        if(!$stmt){
+            return false;
+        }
+        $stmt->bind_param("s",$this->remember_token);
         $stmt->execute();
         return $stmt->get_result();
     }
@@ -398,5 +420,19 @@ class User extends Connection implements Crud {
                 'created_at'=>$this->created_at,
                 'updated_at'=>$this->updated_at
             ];
+    }
+
+ 
+
+    /**
+     * Set the value of remember_token
+     *
+     * @return  self
+     */ 
+    public function setRemember_token($remember_token)
+    {
+        $this->remember_token = $remember_token;
+
+        return $this;
     }
 }

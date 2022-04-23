@@ -1,5 +1,6 @@
 <?php
 namespace App\Database\Models;
+
 use App\Database\Config\Connection;
 use App\Database\Contracts\Crud;
 
@@ -291,12 +292,60 @@ class Product extends Connection implements Crud{
 
     }
     public function read(){
-
+        $query = "SELECT `id`,`name_en`,`price`,`desc_en`,`image` FROM `products` WHERE `status` = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('i',$this->status);
+        $stmt->execute();
+        return $stmt->get_result();
     }
     public function update(){
 
     }
     public function delete(){
 
+    }
+
+    public function find() {
+        $query = "SELECT * FROM `product_details` WHERE `id` = ? AND `status` = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('ii',$this->id,$this->status);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    public function specs()
+    {
+        $query = "SELECT
+                        `product_specs`.*,
+                        `specs`.`name`
+                    FROM
+                        `product_specs`
+                    JOIN `specs` ON `specs`.`id` = `product_specs`.`spec_id`
+                    WHERE
+                        `product_id` = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('i',$this->id);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
+    public function reviews()
+    {
+        $query = "SELECT
+                    `reviews`.*,
+                    CONCAT(
+                        `users`.`first_name`,
+                        ' ',
+                        `users`.`last_name`
+                    ) AS `full_name`
+                FROM
+                    `reviews`
+                JOIN `users`
+                ON `users`.`id` = `reviews`.`user_id`
+                WHERE `product_id` = ?";
+         $stmt = $this->con->prepare($query);
+         $stmt->bind_param('i',$this->id);
+         $stmt->execute();
+         return $stmt->get_result();
     }
 }
